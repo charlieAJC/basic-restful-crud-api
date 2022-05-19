@@ -12,12 +12,19 @@ https://learnku.com/docs/laravel/9.x/passport/12270
 
 提供以下 api
 
+**No login required**
+
 * User
   * (POST) api/register
   * (POST) api/login
-  * (GET) api/user
 * Product
   * (GET) api/products
+
+**No login required**
+
+* User
+  * (GET) api/user
+* Product
   * (POST) api/products
   * (GET) api/products/{productId}
   * (PUT) api/products/{productId}
