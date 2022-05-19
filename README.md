@@ -10,22 +10,22 @@ https://learnku.com/docs/laravel/9.x/passport/12270
 
 ## Guide
 
-提供以下 api
+1. 提供以下 api
 
-**No login required**
+    **No login required**
 
-* User
-  * (POST) api/register
-  * (POST) api/login
-* Product
-  * (GET) api/products
+    * User
+      * (POST) api/register
+      * (POST) api/login
+    * Product
+      * (GET) api/products
 
-**No login required**
+    **No login required**
 
-* User
-  * (GET) api/user
-* Product
-  * (POST) api/products
-  * (GET) api/products/{productId}
-  * (PUT) api/products/{productId}
-  * (DELETE) api/products/{productId}
+    * User
+      * (GET) api/user
+    * Product
+      * (POST) api/products
+      * (GET) api/products/{productId}
+      * (PUT) api/products/{productId}
+      * (DELETE) api/products/{productId}
