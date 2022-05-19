@@ -1,0 +1,198 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger はじめましょう",
+        "description": "Laravel restful crud api",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://swagger.test:8000",
+            "description": "Localhost"
+        }
+    ],
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "會員註冊",
+                "description": "會員註冊 Description",
+                "operationId": "user__post_register",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "帳號",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "電子郵件",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "密碼",
+                                        "type": "string"
+                                    },
+                                    "c_password": {
+                                        "description": "確認密碼",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "註冊成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "執行結果",
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "description": "訊息",
+                                            "type": "string",
+                                            "example": "User register successfully."
+                                        },
+                                        "data": {
+                                            "description": "帳號資訊",
+                                            "properties": {
+                                                "token": {
+                                                    "description": "令牌",
+                                                    "type": "string",
+                                                    "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNmU1NjA0ZjgzMjNiODZjNWJiY2U1ZWE2ZWQ0MGU2MThlNTdmOWU0NjVhYmQ1MjcxMDcyN2NmMDdlN2VlZTYxZTM2M2RkMTcyZTc5YWI3MTciLCJpYXQiOjE2NTI4NjM1MjYuNjczMDE1LCJuYmYiOjE2NTI4NjM1MjYuNjczMjE2LCJleHAiOjE2ODQzOTk1MjYuNjEyOTE3LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.KDPR6SSQ1gvljWyc89pGU30hLyiOxutOY1_CQRmTBx31ptFBsdXx9UgCKbWX2Qaqbz8yfAtn9Px25NFekYt46GP3IXijtjB6Rf-k5sW1FWbeYUeVKmTsKHZwaxrlgvdUvcSf9Np-cfr8Dd4VS98ZLrrJbJwHrcG_gDlqHHsMvcQRbHriTz_JWcYIxsbEqCoM_LBjf9GSbgLgtuEjcUEn3rboyCIVU660wUOakTPclL-P9eUKBbTuM8XaXo9QWkYfmTSDj-xVr-l8SfPmiHaylYa7josqCz_2oamz2UNBaIcBdjwXd080pRntjhOiI2jCZEwNFju2cKJd5FYVeMucxwuDohU9i2QjZj_Ai_WhXywHVbg4f1IeX6eJPR1LYxpPf7b_2Q_uo4UwRq2QPQjwRKVqATCCEmyR1Uq52py7EDL_WdQgJdhToeWMmSDt9z_tyKuycRG85azrQ7zHCtKFtJMa3colLkUDHZg-C0ayuLusSCrQ4t_Dr0ZoKg7ItPoTqH559hkIGRt3TjAohTtQmuyKToQy6tSUEiYUrZw7FknhzsnwgMkgG3z44Ckr2wMgT4UeQi47XqqyTQd0I7ANwluVV7H-F4kPmpBlm9hfde_fhf8cYU7hFK1zHkzcfZeDt1RWC9m_Ct3YjT9E75VLL3thmA1wKxu1Xi3Lwg1cAp0"
+                                                },
+                                                "name": {
+                                                    "description": "帳號",
+                                                    "type": "string",
+                                                    "example": "admin"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "註冊失敗，欄位規格錯誤",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "執行結果",
+                                            "type": "boolean",
+                                            "example": "false"
+                                        },
+                                        "message": {
+                                            "description": "訊息",
+                                            "type": "string",
+                                            "example": "Validation Error."
+                                        },
+                                        "data": {
+                                            "description": "資訊",
+                                            "properties": {
+                                                "email": {
+                                                    "description": "錯誤欄位名稱及訊息",
+                                                    "type": "string",
+                                                    "example": "The email must be a valid email address."
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "取得商品列表",
+                "description": "取得商品列表 Description",
+                "operationId": "product__get_products",
+                "responses": {
+                    "200": {
+                        "description": "請求成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "執行結果",
+                                            "type": "boolean",
+                                            "example": "true"
+                                        },
+                                        "message": {
+                                            "description": "訊息",
+                                            "type": "string",
+                                            "example": "Products Retrieved Successfully."
+                                        },
+                                        "data": {
+                                            "description": "商品列表資料",
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Laptop"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2022-05-18 08:52:24"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2022-05-18 08:52:24"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "User",
+            "description": "使用者功能"
+        },
+        {
+            "name": "Product",
+            "description": "商品功能"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
