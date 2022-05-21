@@ -1,0 +1,115 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: 'Swagger はじめましょう'
+  description: 'Laravel restful crud api'
+servers:
+  - url: 'http://swagger.test:8000'
+    description: 'Localhost'
+tags:
+  - name: 'User'
+    description: '使用者功能'
+  - name: 'Product'
+    description: '商品功能'
+paths:
+  /api/login:
+    post:
+      tags:
+        - 'User'
+      summary: '會員登入'
+      description: '會員登入 description'
+      operationId: 'user__post_login'
+      requestBody:
+        description: 'requestBody description'
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: '電子郵件'
+                password:
+                  type: string
+                  description: '密碼'
+              required:
+                - 'email'
+                - 'password'
+      responses:
+        '200':
+          description: '登入成功'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: '執行結果'
+                    default: true
+                  data:
+                    type: object
+                    description: '會員資料'
+                    properties:
+                      token:
+                        type: string
+                        description: '令牌'
+                      name:
+                        type: string
+                        description: '帳號'
+                  message:
+                    type: string
+                    description: '訊息'
+                    default: 'User login successfully.'
+
+  /api/products:
+    get:
+      tags:
+        - 'Product'
+      summary: '取得商品列表'
+      description: '取得商品列表 Description'
+      operationId: 'product__get_products'
+      responses:
+        '200':
+          description: '請求成功'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: '執行結果'
+                    default: true
+                  data:
+                    type: array
+                    description: '商品列表資料'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: '流水號'
+                          default: 1
+                        name:
+                          type: string
+                          description: '商品名稱'
+                          default: 'Laptop'
+                        detail:
+                          type: string
+                          description: '商品描述'
+                          default: 'Dell'
+                        created_at:
+                          type: string
+                          description: '生成時間'
+                          default: '2022-05-18 08:52:24'
+                        updated_at:
+                          type: string
+                          description: '修改時間'
+                          default: '2022-05-18 08:52:24'
+                  message:
+                    type: string
+                    description: '訊息'
+                    default: 'Products Retrieved Successfully.'
+
