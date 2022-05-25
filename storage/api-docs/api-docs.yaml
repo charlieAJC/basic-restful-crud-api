@@ -6,6 +6,13 @@ info:
 servers:
   - url: 'http://swagger.test:8000'
     description: 'Localhost'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
 tags:
   - name: 'User'
     description: '使用者功能'
@@ -112,4 +119,68 @@ paths:
                     type: string
                     description: '訊息'
                     default: 'Products Retrieved Successfully.'
-
+    post:
+      tags:
+        - 'Product'
+      security:
+        - bearerAuth: []
+      summary: '新增商品'
+      description: '新增商品 Description'
+      operationId: 'product__post_products'
+      requestBody:
+        description: 'requestBody description'
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: '商品名稱'
+                detail:
+                  type: string
+                  description: '商品描述'
+              required:
+                - 'name'
+                - 'detail'
+      responses:
+        '200':
+          description: '新增成功'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: '執行結果'
+                    default: true
+                  data:
+                    type: object
+                    description: '新增商品資訊'
+                    properties:
+                      id:
+                        type: integer
+                        description: '流水號'
+                        default: 1
+                      name:
+                        type: string
+                        description: '商品名稱'
+                        default: 'Laptop'
+                      detail:
+                        type: string
+                        description: '商品描述'
+                        default: 'Dell'
+                      created_at:
+                        type: string
+                        description: '生成時間'
+                        default: '2022-05-18 08:52:24'
+                      updated_at:
+                        type: string
+                        description: '修改時間'
+                        default: '2022-05-18 08:52:24'
+                  message:
+                    type: string
+                    description: '訊息'
+                    default: 'Product Created Successfully.'
